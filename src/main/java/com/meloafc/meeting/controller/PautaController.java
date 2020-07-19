@@ -2,6 +2,7 @@ package com.meloafc.meeting.controller;
 
 import com.meloafc.meeting.dto.AssuntoDTO;
 import com.meloafc.meeting.dto.PautaDTO;
+import com.meloafc.meeting.exception.NotFoundException;
 import com.meloafc.meeting.mapper.PautaMapper;
 import com.meloafc.meeting.model.Pauta;
 import com.meloafc.meeting.service.PautaService;
@@ -28,11 +29,11 @@ public class PautaController {
         return pautaMapper.convertToListDTO(pautaService.find());
     }
 
-//    @GetMapping(value = "/{id}")
-//    @ApiOperation(value = "Consultar Pauta por id")
-//    public PautaDTO findById(@ApiParam(value = "id", required = true) @PathVariable Long id) {
-//        return pautaMapper.convertToDTO(pautaService.findOne(id));
-//    }
+    @GetMapping(value = "/{id}")
+    @ApiOperation(value = "Consultar Pauta por id")
+    public PautaDTO findById(@ApiParam(value = "id", required = true) @PathVariable Long id) throws NotFoundException {
+        return pautaMapper.convertToDTO(pautaService.findOne(id));
+    }
 
     @PostMapping()
     @ApiOperation(value = "Criar nova Pauta")

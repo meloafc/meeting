@@ -1,5 +1,6 @@
 package com.meloafc.meeting.model;
 
+import com.meloafc.meeting.enums.PautaStatus;
 import lombok.*;
 
 import javax.persistence.*;
@@ -28,5 +29,18 @@ public class Pauta implements BaseModel<Long> {
 
     @Column(name="duracao_votacao_minutos")
     private Long duracaoVotacaoMinutos;
+
+    public PautaStatus getStatus() {
+        if(inicioVotacao == null) {
+            return PautaStatus.NOVA;
+        }
+
+        LocalDateTime agora = LocalDateTime.now();
+        if(agora.isBefore(inicioVotacao.plusMinutes(duracaoVotacaoMinutos))) {
+            return PautaStatus.EM_VOTACAO;
+        }
+
+        return PautaStatus.VOTACAO_ENCERRADA;
+    }
 
 }

@@ -1,5 +1,6 @@
 package com.meloafc.meeting.service.base;
 
+import com.meloafc.meeting.exception.NotFoundException;
 import com.meloafc.meeting.model.BaseModel;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -8,7 +9,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.io.Serializable;
 import java.util.List;
-import java.util.Optional;
 
 public abstract class AbstractService<T extends BaseModel<I>, I extends Serializable> implements Service<T, I> {
 
@@ -21,8 +21,8 @@ public abstract class AbstractService<T extends BaseModel<I>, I extends Serializ
     }
 
     @Override
-    public Optional<T> findOne(I id) {
-        return repository.findById(id);
+    public T findOne(I id) throws NotFoundException {
+        return repository.findById(id).orElseThrow(() -> new NotFoundException("ruling.notFound"));
     }
 
     @Override

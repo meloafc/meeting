@@ -1,5 +1,6 @@
 package com.meloafc.meeting.dto;
 
+import com.meloafc.meeting.enums.PautaStatus;
 import lombok.*;
 
 @Builder
@@ -11,5 +12,6 @@ public class PautaDTO {
 
     private Long id;
     private String assunto;
+    private PautaStatus status;
 
 }

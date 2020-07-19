@@ -10,6 +10,7 @@ public class PautaMapper implements GenericMapper<Pauta, PautaDTO> {
         return PautaDTO.builder()
                 .id(entity.getId())
                 .assunto(entity.getAssunto())
+                .status(entity.getStatus())
                 .build();
     }
 
