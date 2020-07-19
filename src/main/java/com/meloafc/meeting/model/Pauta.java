@@ -20,6 +20,9 @@ public class Pauta implements BaseModel<Long> {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name="assunto")
+    private String assunto;
+
     @Column(name="inicio_votacao")
     private LocalDateTime inicioVotacao;
 
