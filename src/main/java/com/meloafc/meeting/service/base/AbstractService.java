@@ -10,13 +10,13 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.io.Serializable;
 import java.util.List;
 
-public abstract class AbstractService<T extends BaseModel<I>, I extends Serializable> implements Service<T, I> {
+public abstract class AbstractService<T extends BaseModel<I>, I extends Serializable, R extends JpaRepository<T,I>> implements Service<T, I> {
 
     @Getter(AccessLevel.PROTECTED)
     @Setter(AccessLevel.PRIVATE)
-    private JpaRepository<T,I> repository;
+    private R repository;
 
-    public AbstractService(JpaRepository<T,I> repository) {
+    public AbstractService(R repository) {
         setRepository(repository);
     }
 
