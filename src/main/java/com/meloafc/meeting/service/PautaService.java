@@ -33,4 +33,8 @@ public class PautaService extends AbstractService<Pauta, Long> {
         return update(pauta);
     }
 
+    @Override
+    protected String getNotFoundMessage() {
+        return "ruling.notFound";
+    }
 }

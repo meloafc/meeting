@@ -22,7 +22,7 @@ public abstract class AbstractService<T extends BaseModel<I>, I extends Serializ
 
     @Override
     public T findOne(I id) throws NotFoundException {
-        return repository.findById(id).orElseThrow(() -> new NotFoundException("ruling.notFound"));
+        return repository.findById(id).orElseThrow(() -> new NotFoundException(getNotFoundMessage()));
     }
 
     @Override
@@ -48,5 +48,9 @@ public abstract class AbstractService<T extends BaseModel<I>, I extends Serializ
     @Override
     public void remove(I id) {
         repository.deleteById(id);
+    }
+
+    protected String getNotFoundMessage() {
+        return "resource.notFound";
     }
 }

@@ -20,7 +20,7 @@ public class Usuario implements BaseModel<Long> {
     private Long id;
 
     @Column(name="cpf", length = 11)
-    private Integer cpf;
+    private Long cpf;
 
     @Column(name="nome")
     private String nome;

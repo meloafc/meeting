@@ -12,4 +12,8 @@ public class UsuarioService extends AbstractService<Usuario, Long> {
         super(repository);
     }
 
+    @Override
+    protected String getNotFoundMessage() {
+        return "user.notFound";
+    }
 }
