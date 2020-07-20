@@ -16,6 +16,9 @@
 
 	<properties>
 		<java.version>1.8</java.version>
+		<DATASOURCE.URL>jdbc:mysql://localhost:3306/meeting?useSSL=false</DATASOURCE.URL>
+		<DATASOURCE.USERNAME>root</DATASOURCE.USERNAME>
+		<DATASOURCE.PASSWORD>root</DATASOURCE.PASSWORD>
 	</properties>
 
 	<dependencies>

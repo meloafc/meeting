@@ -1,0 +1,33 @@
+version: '3'
+services:
+  mysql-meeting:
+   container_name: mysql-meeting
+   image: mysql/mysql-server:5.7
+   environment:
+    TZ: America/Manaus
+    MYSQL_DATABASE: meeting
+    MYSQL_ROOT_PASSWORD: root
+    MYSQL_USER: root
+    MYSQL_PASSWORD: root
+   ports:
+   - "3306:3306"
+   networks:
+      - meeting
+
+  backend-meeting:
+    container_name: backend-meeting
+    build: ./
+    working_dir: /backend-meeting
+    volumes:
+      - ./:/backend-meeting
+      - ~/.m2:/root/.m2
+    ports:
+      - "8080:8080"
+    command: mvn clean spring-boot:run -DDATASOURCE.URL=jdbc:mysql://mysql-meeting:3306/meeting?useSSL=false -DDATASOURCE.USERNAME=root -DDATASOURCE.PASSWORD=root
+    depends_on:
+      - mysql-meeting
+    networks:
+      - meeting
+
+networks:
+    meeting:
