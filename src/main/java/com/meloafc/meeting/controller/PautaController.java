@@ -2,6 +2,7 @@ package com.meloafc.meeting.controller;
 
 import com.meloafc.meeting.dto.AssuntoDTO;
 import com.meloafc.meeting.dto.PautaDTO;
+import com.meloafc.meeting.dto.PautaSessaoDTO;
 import com.meloafc.meeting.exception.NotFoundException;
 import com.meloafc.meeting.mapper.PautaMapper;
 import com.meloafc.meeting.model.Pauta;
@@ -39,6 +40,13 @@ public class PautaController {
     @ApiOperation(value = "Criar nova Pauta")
     public PautaDTO novaPauta(@RequestBody AssuntoDTO dto) {
         Pauta pauta = pautaService.add(Pauta.builder().assunto(dto.getAssunto()).build());
+        return pautaMapper.convertToDTO(pauta);
+    }
+
+    @PostMapping("abrir-sessao-voto")
+    @ApiOperation(value = "Abrir uma sessao de votação")
+    public PautaDTO abrirSessaoVoto(@RequestBody PautaSessaoDTO dto) {
+        Pauta pauta = pautaService.abrirSessaoVotacao(dto.getId(), dto.getDuracaoVotacaoMinutos());
         return pautaMapper.convertToDTO(pauta);
     }
 
