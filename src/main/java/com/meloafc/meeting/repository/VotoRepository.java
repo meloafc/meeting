@@ -10,5 +10,6 @@ import java.util.List;
 public interface VotoRepository extends JpaRepository<Voto, Long> {
 
     List<Voto> findAllByPautaIdAndUsuarioId(Long pautaId, Long usuarioId);
+    long countByPautaIdAndAprovaPauta(Long pautaId, boolean aprovaPauta);
 
 }

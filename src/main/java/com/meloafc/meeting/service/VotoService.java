@@ -49,4 +49,8 @@ public class VotoService extends AbstractService<Voto, Long, VotoRepository> {
         return add(voto);
     }
 
+    public long countByPauta(Long pautaId, Boolean aprovaPauta) {
+        return getRepository().countByPautaIdAndAprovaPauta(pautaId, aprovaPauta);
+    }
+
 }

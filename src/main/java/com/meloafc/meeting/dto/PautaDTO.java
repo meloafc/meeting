@@ -2,8 +2,12 @@ package com.meloafc.meeting.dto;
 
 import com.meloafc.meeting.enums.PautaStatus;
 import lombok.*;
+import lombok.experimental.SuperBuilder;
 
-@Builder
+import javax.persistence.MappedSuperclass;
+
+@MappedSuperclass
+@SuperBuilder
 @Getter
 @Setter
 @AllArgsConstructor
