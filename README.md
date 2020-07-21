@@ -1,5 +1,5 @@
 # Meeting
-Api Rest para gerenciamento de sessões de votação de Pautas.
+Api Rest para gerenciamento de sessões de votação.
 
 ## Instalação Rápida
 
@@ -57,6 +57,12 @@ create database meeting
 ```bash
 cd estacionamento/backend
 mvn spring-boot:run
+```
+
+ou
+```bash
+cd estacionamento/backend
+mvn spring-boot:run -DDATASOURCE.URL=jdbc:mysql://localhost:3306/meeting?useSSL=false -DDATASOURCE.USERNAME=root -DDATASOURCE.PASSWORD=root
 ```
 
 O backend começará a ser executado em <http://localhost:8080/swagger-ui.html>.
