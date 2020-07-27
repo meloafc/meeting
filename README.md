@@ -55,13 +55,13 @@ create database meeting
 **4. Executar o backend**
 
 ```bash
-cd estacionamento/backend
+cd meeting
 mvn spring-boot:run
 ```
 
 ou
 ```bash
-cd estacionamento/backend
+cd meeting
 mvn spring-boot:run -DDATASOURCE.URL=jdbc:mysql://localhost:3306/meeting?useSSL=false -DDATASOURCE.USERNAME=root -DDATASOURCE.PASSWORD=root
 ```
 
